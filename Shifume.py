@@ -1,4 +1,5 @@
 '''Etape Insertion Nom:création de la fonction add_Name(name_user)'''
+import random
 
 
 def add_Name():
@@ -47,3 +48,13 @@ def Value_player():
     return choice
 
 choix = Value_player()
+
+#create function PC_value
+lib ={"P":"PIERRE", "F": "FEUILLE", "C":"CISEAUX"}
+
+def PC_value():
+    choice_PC = random.choice(["P","F","C"])
+
+    print("L'ordinateur a joué {}".format(lib["P"]))
+
+PC_value()

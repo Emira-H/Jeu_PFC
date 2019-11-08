@@ -26,35 +26,61 @@ def add_Name():
 
 name=add_Name()
 
-
+Score=0
+Score_PC=0
 #Choice of value
-
-def Value_player():
-    choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
-
-    while choice not in ["P","F","C"]:
-        print("choix invalide")
+while Score<3:
+    def Value_player():
         choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
 
-    if choice == "P":
-        print("Vous avez choisi PIERRE")
+        while choice not in ["P","F","C"]:
+            print("choix invalide")
+            choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
 
-    elif choice == "F":
-        print("vous avez choisi FEUILLE")
+        if choice == 'P':
+            print("Vous avez choisi PIERRE")
 
-    elif choice == "C":
-        print("vous avez choisi CISEAUX")
+        elif choice == 'F':
+            print("vous avez choisi FEUILLE")
 
-    return choice
+        elif choice == 'C':
+            print("vous avez choisi CISEAUX")
 
-choix = Value_player()
+        return choice
 
-#create function PC_value
-lib ={"P":"PIERRE", "F": "FEUILLE", "C":"CISEAUX"}
+    Value_player()
 
-def PC_value():
-    choice_PC = random.choice(["P","F","C"])
+    #create function PC_value
+    lib ={'P':'PIERRE', 'F':'FEUILLE', 'C':'CISEAUX'}
 
-    print("L'ordinateur a joué {}".format(lib["P"]))
+    def PC_value():
+        choice_PC = random.choice(['P','F','C'])
 
-PC_value()
+        print("L'ordinateur a joué {}".format(lib[choice_PC]))
+        return choice_PC
+    PC_value()
+
+    # Comparaison des valeurs
+    # creation of a tuple with choice of the player and the choice of the computer
+
+    play_now = (choice,choice_PC)
+    print(play_now)
+
+    #create a list with the win choices for the name_player
+
+
+    win_player = [('P','C'), ('F','P'), ('C','F')]
+    def player_Win():
+        for i,j in enumerate(win_player):
+            if play_now == win_player[i]:
+                return True
+
+
+    if player_Win() == True:
+        Score = Score + 1
+    elif player_Win()== False and choice_PC == choice:
+        Score_PC = Score_PC + 1
+
+print(player_Win())
+print(Score)
+print(Score_PC)

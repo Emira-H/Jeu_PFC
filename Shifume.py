@@ -1,7 +1,7 @@
 '''Etape Insertion Nom:création de la fonction add_Name(name_user)'''
 import random
 
-
+# function add_name: add name user from a input, return name_player, loop if no name insertion, messages to welcome and explain the rules to choice a value
 def add_Name():
 
     name_player = input("Merci de renseigner votre nom: ")
@@ -12,11 +12,10 @@ def add_Name():
         print(msg_noname)
 
         name_player = input("Merci de renseigner votre nom: ")
-#message to welcome the player
+
     msg_welcome = "Bienvenue {} sur le jeu SHIFUMI!".format(name_player)
 
     print(msg_welcome)
-#message to explain how to do the choice
 
     msg_rule = "Pour jouer, il vous suffit de taper la première lettre de votre choix. Pour choisir pierre, feuille ou ciseaux, veuillez taper respectivement sur la touche P, F ou C"
 
@@ -24,55 +23,59 @@ def add_Name():
 
     return name_player
 
-name=add_Name()
+
+# function to add the values chosen by the player from an input and loop to demand the good values if mistake
+def Value_player():
+
+    choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
+
+    while choice not in ['P','F','C']:
+        print("choix invalide")
+        choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
+
+    if choice == 'P':
+        print("Vous avez choisi PIERRE")
+
+    elif choice == 'F':
+        print("vous avez choisi FEUILLE")
+
+    elif choice == 'C':
+        print("vous avez choisi CISEAUX")
+
+    return choice
+
+# function to add the values of computer with a random
+def PC_value():
+
+    lib ={'P':'PIERRE', 'F':'FEUILLE', 'C':'CISEAUX'}
+
+    choice_PC = random.choice(['P','F','C'])
+
+    print("L'ordinateur a joué {}".format(lib[choice_PC]))
+    return choice_PC
+
+
+# function comparing the tuple of value player and value PC and return True if the winner is the player
+def player_Win():
+    win_player = [('P','C'), ('F','P'), ('C','F')]
+    for i,j in enumerate(win_player):
+        if play_now == win_player[i]:
+            return True
+        else:
+            return False
+
+
+add_Name()
+
 
 Score=0
 Score_PC=0
-#Choice of value
+
 while Score<3 and Score_PC<3:
-    def Value_player():
-        choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
-
-        while choice not in ['P','F','C']:
-            print("choix invalide")
-            choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
-
-        if choice == 'P':
-            print("Vous avez choisi PIERRE")
-
-        elif choice == 'F':
-            print("vous avez choisi FEUILLE")
-
-        elif choice == 'C':
-            print("vous avez choisi CISEAUX")
-
-        return choice
-
-
-    #create function PC_value
-    lib ={'P':'PIERRE', 'F':'FEUILLE', 'C':'CISEAUX'}
-
-    def PC_value():
-        choice_PC = random.choice(['P','F','C'])
-
-        print("L'ordinateur a joué {}".format(lib[choice_PC]))
-        return choice_PC
-
-    # Comparaison des valeurs
-    # creation of a tuple with choice of the player and the choice of the computer
 
     play_now = (Value_player(),  PC_value())
 
-    #create a list with the win choices for the name_player
-
-    def player_Win():
-        win_player = [('P','C'), ('F','P'), ('C','F')]
-        for i,j in enumerate(win_player):
-            if play_now == win_player[i]:
-                return True
-            else:
-                return False
-
+    player_Win()
 
     if player_Win() == True:
         Score = Score + 1

@@ -29,11 +29,11 @@ name=add_Name()
 Score=0
 Score_PC=0
 #Choice of value
-while Score<3:
+while Score<3 and Score_PC<3:
     def Value_player():
         choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
 
-        while choice not in ["P","F","C"]:
+        while choice not in ['P','F','C']:
             print("choix invalide")
             choice = input("Entrer P, F ou C! A vous de jouer! ").upper()
 
@@ -48,7 +48,6 @@ while Score<3:
 
         return choice
 
-    Value_player()
 
     #create function PC_value
     lib ={'P':'PIERRE', 'F':'FEUILLE', 'C':'CISEAUX'}
@@ -58,29 +57,27 @@ while Score<3:
 
         print("L'ordinateur a joué {}".format(lib[choice_PC]))
         return choice_PC
-    PC_value()
 
     # Comparaison des valeurs
     # creation of a tuple with choice of the player and the choice of the computer
 
-    play_now = (choice,choice_PC)
-    print(play_now)
+    play_now = (Value_player(),  PC_value())
 
     #create a list with the win choices for the name_player
 
-
-    win_player = [('P','C'), ('F','P'), ('C','F')]
     def player_Win():
+        win_player = [('P','C'), ('F','P'), ('C','F')]
         for i,j in enumerate(win_player):
             if play_now == win_player[i]:
                 return True
+            else:
+                return False
 
 
     if player_Win() == True:
         Score = Score + 1
-    elif player_Win()== False and choice_PC == choice:
-        Score_PC = Score_PC + 1
+        print("Votre score est de {} contre {} pour votre adversaire".format(Score,Score_PC))
 
-print(player_Win())
-print(Score)
-print(Score_PC)
+    elif player_Win() == False and play_now[0] != play_now[1]:
+        Score_PC = Score_PC + 1
+        print("Votre score est de {} contre {} pour votre adversaire".format(Score,Score_PC))

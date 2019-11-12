@@ -1,20 +1,21 @@
-from functions import insert_name, choices, player_win
+# import functions of file functions
+from functions import choice_player, choice_pc, player_wins, game
 
-name_player = insert_name()
+#input to insert name of the player with control input (error message if name is none)
+name_player = input("Merci de renseigner votre nom: ").upper()
+while len(name_player) == 0:
+    print("Vous n'avez rien renseigné")
+    name_player = input("Merci de renseigner votre nom\n: ").upper()
+#print message to welcome and to explain the choices values
+print("********Bienvenue {} sur le jeu SHIFUMI!*********\n".format(name_player))
+print("Pour choisir PIERRE, FEUILLE ou CISEAUX, veuillez taper la première lettre de votre choix (P, F ou C)\n")
 
-score_player = 0
-score_pc = 0
 
-choice_game = choices()
-
-
-while score_player < 3 and score_pc < 3:
-
-    if player_win():
-        score_player = score_player + 1
-        print("Votre score est de {} contre {} pour votre adversaire, rejouez!\n".format(score_player,score_pc))
-    elif not player_win() and choice_game[0] != choice_game[1]:
-        score_pc = score_pc + 1
-        print("Votre score est de {} contre {} pour votre adversaire, rejouez!\n".format(score_player,score_pc))
-    if choice_game[0] == choice_game[1]:
-        print("Le match est nul. Rejouez! \n")
+#loop for replaying each time after a input
+replay_game = True
+while replay_game:
+    game()
+    Replay=input("Taper R pour rejouer une partie ou 'Q' pour quitter ").lower()
+    if Replay =='q':
+        replay_game = False
+        print("Merci et à bientôt sur SHIFUMI!")

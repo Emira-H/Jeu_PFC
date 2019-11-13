@@ -31,7 +31,7 @@ def player_wins(win_tuples):
             return False
 
 # create the variables which stock the scores of player and PC
-# add a point to each score and print the scores in each choice by comparing the both choices of the player and the PC
+# add a point to each score and print the scores for each choice by comparing the both choices of the player and the PC
 # loop while to replay each time until the score reaches 3 points and print the winner
 
 def game():

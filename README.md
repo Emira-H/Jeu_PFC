@@ -1,11 +1,11 @@
-#******* Project SHIFUME
-----------------------------------------
+# **Project SHIFUME**
+
 ## Purpose
 
 This exercice given during my formation PYTHON in ADEP consist on create a programm in python for an user to play SHIFUME in the terminal with the
  computer.
 
-##Required skills
+## Required skills
 
 - create a working folder for an application project
 - use a virtual environment

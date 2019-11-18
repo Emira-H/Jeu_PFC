@@ -10,12 +10,10 @@ while len(name_player) == 0:
 print("********Bienvenue {} sur le jeu SHIFUMI!*********\n".format(name_player))
 print("Pour choisir PIERRE, FEUILLE ou CISEAUX, veuillez taper la première lettre de votre choix (P, F ou C)\n")
 
-
 #loop for replaying each time after a input
-replay_game = True
-while replay_game:
+while True:
     game()
     Replay=input("Taper R pour rejouer une partie ou 'Q' pour quitter ").lower()
     if Replay =='q':
-        replay_game = False
+        False
         print("Merci et à bientôt sur SHIFUMI!")
